@@ -1,0 +1,140 @@
+/* Theme Variables */
+:root {
+  --bg-color: #ffe6f2; /* Light mode background */
+  --text-color: #333;
+  --box-bg: #fff0f6;
+  --box-border: #ff4da6;
+  --photo-border: #ff4da6;
+  --glow-color: #ff66cc;
+}
+
+body.dark-theme {
+  --bg-color: #1a0033; /* Dark purple */
+  --text-color: #fff;
+  --box-bg: #2b0047;
+  --box-border: #ff66cc;
+  --photo-border: #ff66cc;
+  --glow-color: #ff33cc;
+}
+
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* Floating Photos */
+.floating-photos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.float-photo {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid var(--photo-border);
+  border-radius: 15px;
+  animation: drift linear infinite;
+  transition: border-color 0.4s;
+  opacity: 0.7;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(50px, 50px); }
+  100% { transform: translate(-50px, -50px); }
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+.theme-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Heading */
+.main-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px var(--glow-color);
+  transition: text-shadow 0.4s;
+}
+
+/* Reveal Boxes */
+.box-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reveal-box {
+  background-color: var(--box-bg);
+  border: 3px solid var(--box-border);
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 15px var(--glow-color);
+  text-align: center;
+  transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+.reveal-btn {
+  padding: 10px 20px;
+  background-color: var(--box-border);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 0 10px var(--glow-color);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.reveal-btn:hover:not(:disabled) {
+  background-color: var(--glow-color);
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+.hidden-message {
+  display: none;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Confetti */
+.confetti {
+  pointer-events: none;
+  z-index: 999;
+}
